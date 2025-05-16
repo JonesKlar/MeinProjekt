@@ -3,7 +3,10 @@ def add_numbers(a, b):
     return a + b
 
 def main():
+    """Simple function to print a greeting and perform addition."""
+    print("Hello, welcome to my Python script!")
     print("Welcome to the simple calculator!")
+    
     try:
         num1 = float(input("Enter the first number: "))
         num2 = float(input("Enter the second number: "))
