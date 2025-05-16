@@ -1,24 +1,42 @@
 # Dokumentation
 
 Erstelle eine README-Datei im Wurzelverzeichnis deines lokalen Repositories.
+
 Dokumentiere in der README-Datei die folgenden Punkte:
+
+- [Erstellen eines ssh-Schlüsselpaares](#erstellen-eines-ssh-schlüsselpaares)
+  - [SSH-Schlüssel generieren](#ssh-schlüssel-generieren)
+  - [Generierte Schlüssel](#generierte-schlüssel)
+  - [SSH-Dienst starten](#ssh-dienst-starten)
+- [Einrichten des GitHub-Repositorys "MeinProjekt"](#einrichten-des-github-repositorys-meinprojekt)
+  - [Public key registrieren](#public-key-registrieren)
+  - [Neues Repository "MeinProjekt" erstellen](#neues-repository-meinprojekt-erstellen)
+- [Lokales Klonen des Repositorys, Konfiguration von Git, Erstellen der initialen Commits](#lokales-klonen-des-repositorys-konfiguration-von-git-erstellen-der-initialen-commits)
+- [Erstellen des "feature"-Branches](#erstellen-des-feature-branches)
+- [Mergen des "feature"-Branches in den "main"-Branch](#mergen-des-feature-branches-in-den-main-branch)
+- [Übertragen der Änderungen in das Remote repository](#übertragen-der-änderungen-in-das-remote-repository)
+
+---
 
 ## Erstellen eines ssh-Schlüsselpaares
 
-ssh-keys generieren   
+### SSH-Schlüssel generieren   
 
-In der Git Bash Konsole folgendes Kommando eingeben (Default Pfad oder eigenen Pfad nutzen)
+In der Git Bash Konsole folgendes Kommando eingeben (Default Pfad oder eigenen Pfad nutzen).
+E-Mail muss die E-Mail-Adresse des Github Kontos sein!
 
     ssh-keygen -t ed25519 -C "your_github_account_email@example.com"
 
-![](screens/ssh-console.png)
+<img src="screens/ssh-console.png" width="600">
 
-Generierte Schlüssel:
+### Generierte Schlüssel:
 
-![](screens/ssh-private-public-key.png)
+<img src="screens/ssh-private-public-key.png" width="400">
 
 Die Datei ".pub" ist der öffentliche Schlüssel.
 Öffne diesen mit Notepad und notiere dir den gesamten Inhalt. Dieser wird später in Github registriert.
+
+### SSH-Dienst starten
 
 Start den lokalen ssh service. Öffne dazu die Powershell Konsole mit Admin Rechten:
 
@@ -42,11 +60,12 @@ Auf github.com mit E-Mail Adresse einloggen/registrieren. Die E-Mail muss die gl
 3. Im Bereich `Access` auf `SSH und GPG keys` klicken
 4. Zuvor generierten öffentlichen Schlüssel eintragen und mit `Add SSH key` bestätigen
  
-<img src="screens/ssh-github.com.png" width="500">
+<img src="screens/ssh-github.com.png" width="400">
 
 Registrierter `public ssh key`
 
-<img src="screens/ssh-github-result.png" width="500">
+<img src="screens/ssh-github-result.png" width="400">
+
 
 ### Neues Repository "MeinProjekt" erstellen
 
@@ -57,18 +76,18 @@ Nach dem Login klicke auf "+ New" (oben rechts) und erstelle ein neues leeres Re
 Notiere dir die URL des erstellten Repositories, sie wird später benötigt.
 
 
-<img src="screens/new-repo.png" width="200">
+<img src="screens/new-repo.png" height="200">
 
-Projektnamen eingeben und mit "Create repository bestätigen"
+Den Projektnamen eingeben und mit "Create repository bestätigen"
 
 <img src="screens/new-repo-1.png" width="400">
 
 Auf der Projektseite die hier angezeigte git Projekturl notieren, die wir zum späteren Klonen mit ssh verwenden werden.
 
-<img src="screens/new-repo-2.png" width="600">
+<img src="screens/new-repo-2.png" width="00">
 
 
-## Die Schritte, die du zum lokalen Klonen des Repositorys, zum Konfigurieren von Git und zum Erstellen der initialen Commits durchgeführt hast.
+## Lokales Klonen des Repositorys, Konfiguration von Git, Erstellen der initialen Commits
 
 Gehe in deinem Terminal zu dem Verzeichnis, in dem du dein lokales Git-Repository erstellen möchtest.
 
@@ -87,23 +106,38 @@ Konfiguriere `git` mit deinem Namen und E-Mail, die mit GitHub verknüpft sind:
 <img src="screens/git-clone-project.png" width="600">
 
 
-## Die Schritte, die du zum Erstellen des "feature"-Branches, zum Hinzufügen einer neuen Datei zu diesem Branch und zum Committen der Änderungen durchgeführt hast.
+## Erstellen des "feature"-Branches
 
-<img src="screens/feature-branch-1.png">
-<img src="screens/feature-branch-2.png">
-<img src="screens/feature-branch-3.png">
+Hinzufügen einer neuen Datei zu diesem Branch und Committen der Änderungen.
 
+<img src="screens/feature-branch-1.png" width="600">
 
-## Die Schritte, die du zum Mergen des "feature"-Branches in den "main"-Branch und zum Beheben des dabei auftretenden Merge-Konflikts durchgeführt hast.
+Die Datei `main.py` wird geändert und comitted:
 
-<img src="screens/merge-0.png">
-<img src="screens/merge-1.png">
-
-Resolved conflict:
-
-<img src="screens/merge-1.5.png">
-<img src="screens/merge-2.png">
-<img src="screens/merge-3.png">
+<img src="screens/feature-branch-2.png"  width="600">
 
 
-Verwende Screenshots oder Code-Blöcke, um deine Erklärungen zu verdeutlichen.
+## Mergen des "feature"-Branches in den "main"-Branch
+
+Wechsel zum `main` branch. 
+Nach dem Wechsel zuerst die `main.py` Datei ändern und dann commiten.
+
+<img src="screens/feature-branch-3.png"  width="600">
+
+Den Merge durchführen
+
+<img src="screens/merge-0.png" width="500">
+
+Öffne die Datei `main.py` und löse den Konflikt
+
+<img src="screens/merge-1.png" width="500">
+
+Aufgelöster Konflikt
+
+<img src="screens/merge-1.5.png" width="600">
+<img src="screens/merge-2.png" width="600">
+<img src="screens/merge-3.png" width="600">
+
+## Übertragen der Änderungen in das Remote repository
+
+    git push
